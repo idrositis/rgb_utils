@@ -1,8 +1,5 @@
-rgb_utils
-=========
+# rgb_utils
 
-RGB Utilities
+Utilities to manipulate the RGB channels of a BMP image.
 
-This repo contains utilities to manipulate the RGB channels of a BMP image.
-
-- cpp: utilities in C++
+- cpp: utilities in C++ using [EasyBMP](http://easybmp.sourceforge.net) library

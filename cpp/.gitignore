@@ -1,0 +1,4 @@
+*.o
+rgb2cmyk
+rgb2yuv
+rgb_split
