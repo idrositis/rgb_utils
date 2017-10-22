@@ -11,10 +11,10 @@
 // =================
 // - RED   = 1-C3
 // - GREEN = 1-M3
-// - BLUE  = 1-Y3 
+// - BLUE  = 1-Y3
 //
-// Since the RGB ans CMY color spaces are complements. Before doing that though, you 
-// have to convert CMYK to CMY by adding the "black" (K) value to the CMY values. 
+// Since the RGB ans CMY color spaces are complements. Before doing that though, you
+// have to convert CMYK to CMY by adding the "black" (K) value to the CMY values.
 // The black value is the minimum of the other 3 values:
 //
 // CMYK2CMY
@@ -67,7 +67,7 @@ bool RGBtoCMYK (int iR, int iG, int iB, int *piC, int *piM, int *piY, int *piK)
 		return 0;
 	}
 
-	if (iR == 0 && iG == 0 && iB == 0)  {
+	if (iR < 3 && iG < 3 && iB < 3)  {
    	*piC = 0;
 		*piM = 0;
 		*piY = 0;
@@ -90,7 +90,7 @@ int main(int argc, char* argv[]) {
 
  // Argument check
  if (argc != 2) {
-    cout << "\n== rgp2cmyk | v1.0 - Apr2011 ======================================\n" 
+    cout << "\n== rgp2cmyk | v1.0 - Apr2011 ======================================\n"
          << " Convert an RGB image to C|M|Y|K channels.\n"
          << "   Usage: rgp2cmyk <bmp_filename>\n"
          << "  Output: <bmp_filename_C.bmp> Cyan component\n"
@@ -105,8 +105,8 @@ int main(int argc, char* argv[]) {
  // Read input file
  BMP Input;
  Input.ReadFromFile(argv[1]);
- 
- // Initialize output BMP classes 
+
+ // Initialize output BMP classes
  BMP OutputC, OutputM, OutputY, OutputK;
  OutputC.SetSize(Input.TellWidth(), Input.TellHeight());
  OutputM.SetSize(Input.TellWidth(), Input.TellHeight());
@@ -139,7 +139,7 @@ int main(int argc, char* argv[]) {
        M3 = min(100, (M4*(100 - K4))/100 + K4);
        Y3 = min(100, (Y4*(100 - K4))/100 + K4);
 
-       OutputC(i, j)->Red   = (ebmpBYTE)(255 - (C3*255)/100); 
+       OutputC(i, j)->Red   = (ebmpBYTE)(255 - (C3*255)/100);
        OutputC(i, j)->Green = 255;
        OutputC(i, j)->Blue  = 255;
 
