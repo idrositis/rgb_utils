@@ -2,7 +2,7 @@
 // RGB2CMYK
 // Convert an RGB image to CMYK channels.
 //
-// v1.0 | Apr 2012
+// v1.1 | Oct 2016
 //
 
 // RGB <-> CMYK definitions
